@@ -1,0 +1,22 @@
+{
+  "runtime": {
+    "vllm": "0.30.0",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "gpu_memory_mib": 6141,
+    "os": "Ubuntu 22.04 under WSL2"
+  },
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "dtype": "float16",
+  "attention_backend": "FlashAttention 2",
+  "max_model_length": 1024,
+  "gpu_memory_utilization": 0.75,
+  "eager_mode": true,
+  "prefix_caching": true,
+  "chunked_prefill": true,
+  "kv_cache_gib": 3.22,
+  "kv_cache_tokens": 280976,
+  "maximum_concurrency_at_1024_tokens": 274.39,
+  "source": "vLLM startup log captured before the committed serving benchmarks"
+}

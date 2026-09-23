@@ -1,0 +1,12 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "device": "cuda",
+  "dtype": "float16",
+  "context_lengths": [64, 256, 512],
+  "batch_sizes": [1, 2],
+  "new_tokens": 32,
+  "warmup_runs": 2,
+  "measured_runs": 4,
+  "seed": 17,
+  "backends": ["transformers_kv_cache", "transformers_no_cache"]
+}

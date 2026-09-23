@@ -1,0 +1,104 @@
+{
+  "server": "http://localhost:8000",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "concurrency": 4,
+  "requests": 16,
+  "warmup_requests": 2,
+  "ttft_ms": {
+    "mean": 67.73010124999956,
+    "median": 70.80865150001614,
+    "p95": 76.50698325002736,
+    "minimum": 48.591165999994246,
+    "maximum": 77.12013899998738
+  },
+  "end_to_end_ms": {
+    "mean": 1432.0518238749926,
+    "median": 1432.0348619999947,
+    "p95": 1465.8171920000314,
+    "minimum": 1398.4276369999975,
+    "maximum": 1465.8444440000267
+  },
+  "aggregate_output_tokens_per_second": 178.7120429179134,
+  "raw": [
+    {
+      "ttft_ms": 53.70041700001593,
+      "end_to_end_ms": 1446.3316089999694,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 77.12013899998738,
+      "end_to_end_ms": 1447.1068039999864,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 76.30259800004069,
+      "end_to_end_ms": 1446.2965710000049,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 75.82655299995622,
+      "end_to_end_ms": 1445.8431989999667,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 57.51946200001612,
+      "end_to_end_ms": 1464.9672780000174,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 74.70078500000454,
+      "end_to_end_ms": 1465.8032899999967,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 74.58593100000144,
+      "end_to_end_ms": 1465.808108000033,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 74.54546399998208,
+      "end_to_end_ms": 1465.8444440000267,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 52.23262499998782,
+      "end_to_end_ms": 1399.021088999973,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 71.08361199999536,
+      "end_to_end_ms": 1398.543004999965,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 70.85574900003166,
+      "end_to_end_ms": 1398.5121200000208,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 70.76155400000061,
+      "end_to_end_ms": 1398.4276369999975,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 48.591165999994246,
+      "end_to_end_ms": 1418.2265250000228,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 68.69870899998887,
+      "end_to_end_ms": 1417.4885279999785,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 68.59434500000816,
+      "end_to_end_ms": 1417.3213969999665,
+      "completion_tokens": 64
+    },
+    {
+      "ttft_ms": 68.5625109999819,
+      "end_to_end_ms": 1417.2875779999572,
+      "completion_tokens": 64
+    }
+  ]
+}

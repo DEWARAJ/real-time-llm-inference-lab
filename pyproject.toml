@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "realtime-llm-inference-lab"
+version = "0.1.0"
+description = "Reproducible latency, throughput, memory, and KV-cache experiments for small language models."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Dewaraj Raparthi"}]
+dependencies = [
+  "numpy>=1.26",
+  "torch>=2.3",
+  "transformers>=4.45",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "matplotlib>=3.8"]
+serving = ["aiohttp>=3.10"]
+kernels = ["triton>=3.0; platform_system == 'Linux'"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

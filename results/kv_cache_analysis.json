@@ -1,0 +1,70 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "layers": 24,
+  "attention_heads": 14,
+  "kv_heads": 2,
+  "head_dim": 64,
+  "dtype": "float16",
+  "rows": [
+    {
+      "batch_size": 1,
+      "sequence_length": 512,
+      "mib": 6.0
+    },
+    {
+      "batch_size": 1,
+      "sequence_length": 2048,
+      "mib": 24.0
+    },
+    {
+      "batch_size": 1,
+      "sequence_length": 8192,
+      "mib": 96.0
+    },
+    {
+      "batch_size": 1,
+      "sequence_length": 32768,
+      "mib": 384.0
+    },
+    {
+      "batch_size": 4,
+      "sequence_length": 512,
+      "mib": 24.0
+    },
+    {
+      "batch_size": 4,
+      "sequence_length": 2048,
+      "mib": 96.0
+    },
+    {
+      "batch_size": 4,
+      "sequence_length": 8192,
+      "mib": 384.0
+    },
+    {
+      "batch_size": 4,
+      "sequence_length": 32768,
+      "mib": 1536.0
+    },
+    {
+      "batch_size": 16,
+      "sequence_length": 512,
+      "mib": 96.0
+    },
+    {
+      "batch_size": 16,
+      "sequence_length": 2048,
+      "mib": 384.0
+    },
+    {
+      "batch_size": 16,
+      "sequence_length": 8192,
+      "mib": 1536.0
+    },
+    {
+      "batch_size": 16,
+      "sequence_length": 32768,
+      "mib": 6144.0
+    }
+  ]
+}

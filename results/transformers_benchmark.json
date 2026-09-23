@@ -1,0 +1,902 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-23T23:32:33.507248+00:00",
+  "config": {
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "device": "cuda",
+    "dtype": "float16",
+    "context_lengths": [
+      64,
+      256,
+      512
+    ],
+    "batch_sizes": [
+      1,
+      2
+    ],
+    "new_tokens": 32,
+    "warmup_runs": 2,
+    "measured_runs": 4,
+    "seed": 17,
+    "backends": [
+      "transformers_kv_cache",
+      "transformers_no_cache"
+    ]
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.14",
+    "torch": "2.9.1+cu128",
+    "transformers": "4.57.6",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+  },
+  "measurement_scope": "model prefill and autoregressive decode only; tokenization excluded",
+  "experiment_order": "seeded random matrix-point order; cached and uncached runs paired, with backend-first order alternating by repeat",
+  "experiments": [
+    {
+      "backend": "transformers_kv_cache",
+      "context_length": 64,
+      "batch_size": 1,
+      "runs": [
+        {
+          "ttft_ms": 63.22580005507916,
+          "tpot_ms": 47.62115804929166,
+          "end_to_end_ms": 1539.4816995831206,
+          "output_tokens_per_second": 20.78621656149946,
+          "peak_memory_mib": 979.365234375
+        },
+        {
+          "ttft_ms": 60.107899946160614,
+          "tpot_ms": 49.45190322224892,
+          "end_to_end_ms": 1593.1168998358771,
+          "output_tokens_per_second": 20.08641048456434,
+          "peak_memory_mib": 979.365234375
+        },
+        {
+          "ttft_ms": 53.82240004837513,
+          "tpot_ms": 48.79213549241784,
+          "end_to_end_ms": 1566.3786003133282,
+          "output_tokens_per_second": 20.42928829185928,
+          "peak_memory_mib": 979.365234375
+        },
+        {
+          "ttft_ms": 50.2579000312835,
+          "tpot_ms": 47.26330646043343,
+          "end_to_end_ms": 1515.4204003047198,
+          "output_tokens_per_second": 21.116252621098052,
+          "peak_memory_mib": 979.365234375
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 56.8535000202246,
+          "median": 56.96514999726787,
+          "p95": 62.75811503874138,
+          "minimum": 50.2579000312835,
+          "maximum": 63.22580005507916
+        },
+        "tpot_ms": {
+          "mean": 48.282125806097966,
+          "median": 48.206646770854746,
+          "p95": 49.352938062774264,
+          "minimum": 47.26330646043343,
+          "maximum": 49.45190322224892
+        },
+        "end_to_end_ms": {
+          "mean": 1553.5994000092614,
+          "median": 1552.9301499482244,
+          "p95": 1589.1061549074948,
+          "minimum": 1515.4204003047198,
+          "maximum": 1593.1168998358771
+        },
+        "output_tokens_per_second": {
+          "mean": 20.604541989755283,
+          "median": 20.60775242667937,
+          "p95": 21.066747212158262,
+          "minimum": 20.08641048456434,
+          "maximum": 21.116252621098052
+        },
+        "peak_memory_mib": {
+          "mean": 979.365234375,
+          "median": 979.365234375,
+          "p95": 979.365234375,
+          "minimum": 979.365234375,
+          "maximum": 979.365234375
+        }
+      }
+    },
+    {
+      "backend": "transformers_kv_cache",
+      "context_length": 64,
+      "batch_size": 2,
+      "runs": [
+        {
+          "ttft_ms": 91.9933000113815,
+          "tpot_ms": 58.798838703472526,
+          "end_to_end_ms": 1914.7572998190299,
+          "output_tokens_per_second": 33.42460164849553,
+          "peak_memory_mib": 1000.31640625
+        },
+        {
+          "ttft_ms": 37.86090004723519,
+          "tpot_ms": 37.592303218139755,
+          "end_to_end_ms": 1203.2222998095676,
+          "output_tokens_per_second": 53.190503542137805,
+          "peak_memory_mib": 1000.31640625
+        },
+        {
+          "ttft_ms": 44.71360007300973,
+          "tpot_ms": 37.454277427206115,
+          "end_to_end_ms": 1205.7962003163993,
+          "output_tokens_per_second": 53.076962743128966,
+          "peak_memory_mib": 1000.31640625
+        },
+        {
+          "ttft_ms": 40.293000056408346,
+          "tpot_ms": 37.14292579811187,
+          "end_to_end_ms": 1191.7236997978762,
+          "output_tokens_per_second": 53.703723447687416,
+          "peak_memory_mib": 1000.31640625
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 53.71520004700869,
+          "median": 42.50330006470904,
+          "p95": 84.90134502062573,
+          "minimum": 37.86090004723519,
+          "maximum": 91.9933000113815
+        },
+        "tpot_ms": {
+          "mean": 42.74708628673257,
+          "median": 37.523290322672935,
+          "p95": 55.6178583806726,
+          "minimum": 37.14292579811187,
+          "maximum": 58.798838703472526
+        },
+        "end_to_end_ms": {
+          "mean": 1378.8748749357183,
+          "median": 1204.5092500629835,
+          "p95": 1808.413134893635,
+          "minimum": 1191.7236997978762,
+          "maximum": 1914.7572998190299
+        },
+        "output_tokens_per_second": {
+          "mean": 48.34894784536243,
+          "median": 53.13373314263339,
+          "p95": 53.62674046185498,
+          "minimum": 33.42460164849553,
+          "maximum": 53.703723447687416
+        },
+        "peak_memory_mib": {
+          "mean": 1000.31640625,
+          "median": 1000.31640625,
+          "p95": 1000.31640625,
+          "minimum": 1000.31640625,
+          "maximum": 1000.31640625
+        }
+      }
+    },
+    {
+      "backend": "transformers_kv_cache",
+      "context_length": 256,
+      "batch_size": 1,
+      "runs": [
+        {
+          "ttft_ms": 52.13930003810674,
+          "tpot_ms": 36.861274188624755,
+          "end_to_end_ms": 1194.8387998854741,
+          "output_tokens_per_second": 26.781855429424635,
+          "peak_memory_mib": 1039.42822265625
+        },
+        {
+          "ttft_ms": 45.32959999050945,
+          "tpot_ms": 37.214732274503234,
+          "end_to_end_ms": 1198.9863005001098,
+          "output_tokens_per_second": 26.689212367691326,
+          "peak_memory_mib": 1039.42822265625
+        },
+        {
+          "ttft_ms": 45.96650006715208,
+          "tpot_ms": 38.552480652147246,
+          "end_to_end_ms": 1241.0934002837166,
+          "output_tokens_per_second": 25.783716191452417,
+          "peak_memory_mib": 1039.42822265625
+        },
+        {
+          "ttft_ms": 47.578099998645484,
+          "tpot_ms": 38.549609673810345,
+          "end_to_end_ms": 1242.615999886766,
+          "output_tokens_per_second": 25.752122942981593,
+          "peak_memory_mib": 1039.42822265625
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 47.75337502360344,
+          "median": 46.772300032898784,
+          "p95": 51.455120032187544,
+          "minimum": 45.32959999050945,
+          "maximum": 52.13930003810674
+        },
+        "tpot_ms": {
+          "mean": 37.79452419727139,
+          "median": 37.88217097415679,
+          "p95": 38.55205000539671,
+          "minimum": 36.861274188624755,
+          "maximum": 38.552480652147246
+        },
+        "end_to_end_ms": {
+          "mean": 1219.3836251390167,
+          "median": 1220.0398503919132,
+          "p95": 1242.3876099463087,
+          "minimum": 1194.8387998854741,
+          "maximum": 1242.615999886766
+        },
+        "output_tokens_per_second": {
+          "mean": 26.25172673288749,
+          "median": 26.23646427957187,
+          "p95": 26.76795897016464,
+          "minimum": 25.752122942981593,
+          "maximum": 26.781855429424635
+        },
+        "peak_memory_mib": {
+          "mean": 1039.42822265625,
+          "median": 1039.42822265625,
+          "p95": 1039.42822265625,
+          "minimum": 1039.42822265625,
+          "maximum": 1039.42822265625
+        }
+      }
+    },
+    {
+      "backend": "transformers_kv_cache",
+      "context_length": 256,
+      "batch_size": 2,
+      "runs": [
+        {
+          "ttft_ms": 56.38670001644641,
+          "tpot_ms": 38.05044837926905,
+          "end_to_end_ms": 1235.950599773787,
+          "output_tokens_per_second": 51.78200488896058,
+          "peak_memory_mib": 1119.5361328125
+        },
+        {
+          "ttft_ms": 51.04159994516522,
+          "tpot_ms": 37.474348408830984,
+          "end_to_end_ms": 1212.7464006189257,
+          "output_tokens_per_second": 52.77278082815795,
+          "peak_memory_mib": 1119.5361328125
+        },
+        {
+          "ttft_ms": 54.623099975287914,
+          "tpot_ms": 37.91714515987663,
+          "end_to_end_ms": 1230.0545999314636,
+          "output_tokens_per_second": 52.03021069435939,
+          "peak_memory_mib": 1119.5361328125
+        },
+        {
+          "ttft_ms": 57.455800008028746,
+          "tpot_ms": 39.95438063547255,
+          "end_to_end_ms": 1296.041599707678,
+          "output_tokens_per_second": 49.381130987180654,
+          "peak_memory_mib": 1119.5361328125
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 54.87679998623207,
+          "median": 55.50489999586716,
+          "p95": 57.295435009291396,
+          "minimum": 51.04159994516522,
+          "maximum": 57.455800008028746
+        },
+        "tpot_ms": {
+          "mean": 38.3490806458623,
+          "median": 37.98379676957284,
+          "p95": 39.66879079704203,
+          "minimum": 37.474348408830984,
+          "maximum": 39.95438063547255
+        },
+        "end_to_end_ms": {
+          "mean": 1243.6983000079636,
+          "median": 1233.0025998526253,
+          "p95": 1287.0279497175943,
+          "minimum": 1212.7464006189257,
+          "maximum": 1296.041599707678
+        },
+        "output_tokens_per_second": {
+          "mean": 51.49153184966464,
+          "median": 51.906107791659984,
+          "p95": 52.66139530808817,
+          "minimum": 49.381130987180654,
+          "maximum": 52.77278082815795
+        },
+        "peak_memory_mib": {
+          "mean": 1119.5361328125,
+          "median": 1119.5361328125,
+          "p95": 1119.5361328125,
+          "minimum": 1119.5361328125,
+          "maximum": 1119.5361328125
+        }
+      }
+    },
+    {
+      "backend": "transformers_kv_cache",
+      "context_length": 512,
+      "batch_size": 1,
+      "runs": [
+        {
+          "ttft_ms": 61.40240002423525,
+          "tpot_ms": 39.22198710572575,
+          "end_to_end_ms": 1277.2840003017336,
+          "output_tokens_per_second": 25.05315966726321,
+          "peak_memory_mib": 1119.51220703125
+        },
+        {
+          "ttft_ms": 56.895499932579696,
+          "tpot_ms": 38.964087105987055,
+          "end_to_end_ms": 1264.7822002181783,
+          "output_tokens_per_second": 25.300798820919454,
+          "peak_memory_mib": 1119.51220703125
+        },
+        {
+          "ttft_ms": 55.31580001115799,
+          "tpot_ms": 38.43132902552644,
+          "end_to_end_ms": 1246.6869998024777,
+          "output_tokens_per_second": 25.66803055223164,
+          "peak_memory_mib": 1119.51220703125
+        },
+        {
+          "ttft_ms": 56.76439998205751,
+          "tpot_ms": 40.418348402806345,
+          "end_to_end_ms": 1309.7332004690543,
+          "output_tokens_per_second": 24.432456922173042,
+          "peak_memory_mib": 1119.51220703125
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 57.59452498750761,
+          "median": 56.829949957318604,
+          "p95": 60.726365010486916,
+          "minimum": 55.31580001115799,
+          "maximum": 61.40240002423525
+        },
+        "tpot_ms": {
+          "mean": 39.2589379100114,
+          "median": 39.0930371058564,
+          "p95": 40.238894208244254,
+          "minimum": 38.43132902552644,
+          "maximum": 40.418348402806345
+        },
+        "end_to_end_ms": {
+          "mean": 1274.621600197861,
+          "median": 1271.033100259956,
+          "p95": 1304.8658204439562,
+          "minimum": 1246.6869998024777,
+          "maximum": 1309.7332004690543
+        },
+        "output_tokens_per_second": {
+          "mean": 25.113611490646836,
+          "median": 25.17697924409133,
+          "p95": 25.612945792534813,
+          "minimum": 24.432456922173042,
+          "maximum": 25.66803055223164
+        },
+        "peak_memory_mib": {
+          "mean": 1119.51220703125,
+          "median": 1119.51220703125,
+          "p95": 1119.51220703125,
+          "minimum": 1119.51220703125,
+          "maximum": 1119.51220703125
+        }
+      }
+    },
+    {
+      "backend": "transformers_kv_cache",
+      "context_length": 512,
+      "batch_size": 2,
+      "runs": [
+        {
+          "ttft_ms": 128.38259991258383,
+          "tpot_ms": 52.12097741558306,
+          "end_to_end_ms": 1744.132899795659,
+          "output_tokens_per_second": 36.6944514420307,
+          "peak_memory_mib": 1279.7041015625
+        },
+        {
+          "ttft_ms": 128.17670009098947,
+          "tpot_ms": 48.74821934443448,
+          "end_to_end_ms": 1639.3714997684583,
+          "output_tokens_per_second": 39.03935136669098,
+          "peak_memory_mib": 1279.7041015625
+        },
+        {
+          "ttft_ms": 120.79229997470975,
+          "tpot_ms": 52.015887092678774,
+          "end_to_end_ms": 1733.2847998477519,
+          "output_tokens_per_second": 36.92411080142261,
+          "peak_memory_mib": 1279.7041015625
+        },
+        {
+          "ttft_ms": 133.46060004550964,
+          "tpot_ms": 66.43486450681642,
+          "end_to_end_ms": 2192.941399756819,
+          "output_tokens_per_second": 29.184546384639884,
+          "peak_memory_mib": 1279.7041015625
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 127.70305000594817,
+          "median": 128.27965000178665,
+          "p95": 132.69890002557077,
+          "minimum": 120.79229997470975,
+          "maximum": 133.46060004550964
+        },
+        "tpot_ms": {
+          "mean": 54.82998708987819,
+          "median": 52.06843225413092,
+          "p95": 64.28778144313141,
+          "minimum": 48.74821934443448,
+          "maximum": 66.43486450681642
+        },
+        "end_to_end_ms": {
+          "mean": 1827.432649792172,
+          "median": 1738.7088498217054,
+          "p95": 2125.620124762645,
+          "minimum": 1639.3714997684583,
+          "maximum": 2192.941399756819
+        },
+        "output_tokens_per_second": {
+          "mean": 35.460614998696045,
+          "median": 36.809281121726656,
+          "p95": 38.722065281900726,
+          "minimum": 29.184546384639884,
+          "maximum": 39.03935136669098
+        },
+        "peak_memory_mib": {
+          "mean": 1279.7041015625,
+          "median": 1279.7041015625,
+          "p95": 1279.7041015625,
+          "minimum": 1279.7041015625,
+          "maximum": 1279.7041015625
+        }
+      }
+    },
+    {
+      "backend": "transformers_no_cache",
+      "context_length": 64,
+      "batch_size": 1,
+      "runs": [
+        {
+          "ttft_ms": 61.81869993451983,
+          "tpot_ms": 51.52310966514051,
+          "end_to_end_ms": 1659.0350995538756,
+          "output_tokens_per_second": 19.288320065443454,
+          "peak_memory_mib": 1015.45751953125
+        },
+        {
+          "ttft_ms": 47.08219994790852,
+          "tpot_ms": 53.64124516716167,
+          "end_to_end_ms": 1709.9608001299202,
+          "output_tokens_per_second": 18.713879287506877,
+          "peak_memory_mib": 1015.45751953125
+        },
+        {
+          "ttft_ms": 54.10990002565086,
+          "tpot_ms": 52.06162257931165,
+          "end_to_end_ms": 1668.020199984312,
+          "output_tokens_per_second": 19.184419949051556,
+          "peak_memory_mib": 1015.45751953125
+        },
+        {
+          "ttft_ms": 54.85950002912432,
+          "tpot_ms": 49.49449032785431,
+          "end_to_end_ms": 1589.188700192608,
+          "output_tokens_per_second": 20.13606061767343,
+          "peak_memory_mib": 1015.45751953125
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 54.46757498430088,
+          "median": 54.48470002738759,
+          "p95": 60.7748199487105,
+          "minimum": 47.08219994790852,
+          "maximum": 61.81869993451983
+        },
+        "tpot_ms": {
+          "mean": 51.68011693486704,
+          "median": 51.792366122226085,
+          "p95": 53.40430177898417,
+          "minimum": 49.49449032785431,
+          "maximum": 53.64124516716167
+        },
+        "end_to_end_ms": {
+          "mean": 1656.551199965179,
+          "median": 1663.5276497690938,
+          "p95": 1703.669710108079,
+          "minimum": 1589.188700192608,
+          "maximum": 1709.9608001299202
+        },
+        "output_tokens_per_second": {
+          "mean": 19.33066997991883,
+          "median": 19.236370007247505,
+          "p95": 20.008899534838932,
+          "minimum": 18.713879287506877,
+          "maximum": 20.13606061767343
+        },
+        "peak_memory_mib": {
+          "mean": 1015.45751953125,
+          "median": 1015.45751953125,
+          "p95": 1015.45751953125,
+          "minimum": 1015.45751953125,
+          "maximum": 1015.45751953125
+        }
+      }
+    },
+    {
+      "backend": "transformers_no_cache",
+      "context_length": 64,
+      "batch_size": 2,
+      "runs": [
+        {
+          "ttft_ms": 50.967899966053665,
+          "tpot_ms": 43.92375807923776,
+          "end_to_end_ms": 1412.604400422424,
+          "output_tokens_per_second": 45.306385836587715,
+          "peak_memory_mib": 1070.10302734375
+        },
+        {
+          "ttft_ms": 45.97560002002865,
+          "tpot_ms": 41.03138386797641,
+          "end_to_end_ms": 1317.9484999272972,
+          "output_tokens_per_second": 48.56031931712845,
+          "peak_memory_mib": 1070.10302734375
+        },
+        {
+          "ttft_ms": 35.987299983389676,
+          "tpot_ms": 37.429035487284345,
+          "end_to_end_ms": 1196.2874000892043,
+          "output_tokens_per_second": 53.498849854330714,
+          "peak_memory_mib": 1070.10302734375
+        },
+        {
+          "ttft_ms": 38.54270000010729,
+          "tpot_ms": 38.75526451625891,
+          "end_to_end_ms": 1239.9559000041336,
+          "output_tokens_per_second": 51.614738878847746,
+          "peak_memory_mib": 1070.10302734375
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 42.86837499239482,
+          "median": 42.25915001006797,
+          "p95": 50.219054974149905,
+          "minimum": 35.987299983389676,
+          "maximum": 50.967899966053665
+        },
+        "tpot_ms": {
+          "mean": 40.28486048768936,
+          "median": 39.89332419211766,
+          "p95": 43.48990194754856,
+          "minimum": 37.429035487284345,
+          "maximum": 43.92375807923776
+        },
+        "end_to_end_ms": {
+          "mean": 1291.6990501107648,
+          "median": 1278.9521999657154,
+          "p95": 1398.406015348155,
+          "minimum": 1196.2874000892043,
+          "maximum": 1412.604400422424
+        },
+        "output_tokens_per_second": {
+          "mean": 49.74507347172366,
+          "median": 50.087529097988096,
+          "p95": 53.21623320800827,
+          "minimum": 45.306385836587715,
+          "maximum": 53.498849854330714
+        },
+        "peak_memory_mib": {
+          "mean": 1070.10302734375,
+          "median": 1070.10302734375,
+          "p95": 1070.10302734375,
+          "minimum": 1070.10302734375,
+          "maximum": 1070.10302734375
+        }
+      }
+    },
+    {
+      "backend": "transformers_no_cache",
+      "context_length": 256,
+      "batch_size": 1,
+      "runs": [
+        {
+          "ttft_ms": 38.84049993939698,
+          "tpot_ms": 44.59700645548442,
+          "end_to_end_ms": 1421.347700059414,
+          "output_tokens_per_second": 22.513843726388952,
+          "peak_memory_mib": 1126.6728515625
+        },
+        {
+          "ttft_ms": 48.94919996149838,
+          "tpot_ms": 44.84280322738473,
+          "end_to_end_ms": 1439.0761000104249,
+          "output_tokens_per_second": 22.236489091694448,
+          "peak_memory_mib": 1126.6728515625
+        },
+        {
+          "ttft_ms": 44.13439997006208,
+          "tpot_ms": 45.45252259460188,
+          "end_to_end_ms": 1453.1626004027203,
+          "output_tokens_per_second": 22.020935572613638,
+          "peak_memory_mib": 1126.6728515625
+        },
+        {
+          "ttft_ms": 45.07440002635121,
+          "tpot_ms": 46.82743548220324,
+          "end_to_end_ms": 1496.7248999746516,
+          "output_tokens_per_second": 21.380014457260614,
+          "peak_memory_mib": 1126.6728515625
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 44.24962497432716,
+          "median": 44.604399998206645,
+          "p95": 48.367979971226305,
+          "minimum": 38.84049993939698,
+          "maximum": 48.94919996149838
+        },
+        "tpot_ms": {
+          "mean": 45.429941939918564,
+          "median": 45.147662910993304,
+          "p95": 46.62119854906304,
+          "minimum": 44.59700645548442,
+          "maximum": 46.82743548220324
+        },
+        "end_to_end_ms": {
+          "mean": 1452.5778251118027,
+          "median": 1446.1193502065726,
+          "p95": 1490.190555038862,
+          "minimum": 1421.347700059414,
+          "maximum": 1496.7248999746516
+        },
+        "output_tokens_per_second": {
+          "mean": 22.03782071198941,
+          "median": 22.128712332154045,
+          "p95": 22.472240531184777,
+          "minimum": 21.380014457260614,
+          "maximum": 22.513843726388952
+        },
+        "peak_memory_mib": {
+          "mean": 1126.6728515625,
+          "median": 1126.6728515625,
+          "p95": 1126.6728515625,
+          "minimum": 1126.6728515625,
+          "maximum": 1126.6728515625
+        }
+      }
+    },
+    {
+      "backend": "transformers_no_cache",
+      "context_length": 256,
+      "batch_size": 2,
+      "runs": [
+        {
+          "ttft_ms": 45.24639993906021,
+          "tpot_ms": 53.762358053767635,
+          "end_to_end_ms": 1711.8794996058568,
+          "output_tokens_per_second": 37.385808998083895,
+          "peak_memory_mib": 1292.6318359375
+        },
+        {
+          "ttft_ms": 51.732399966567755,
+          "tpot_ms": 54.24999356299879,
+          "end_to_end_ms": 1733.4822004195303,
+          "output_tokens_per_second": 36.91990606220876,
+          "peak_memory_mib": 1292.6318359375
+        },
+        {
+          "ttft_ms": 46.161900041624904,
+          "tpot_ms": 52.65731611965044,
+          "end_to_end_ms": 1678.5386997507885,
+          "output_tokens_per_second": 38.128403002863166,
+          "peak_memory_mib": 1292.6318359375
+        },
+        {
+          "ttft_ms": 45.85230001248419,
+          "tpot_ms": 52.432248376369955,
+          "end_to_end_ms": 1671.2519996799529,
+          "output_tokens_per_second": 38.29464378337683,
+          "peak_memory_mib": 1292.6318359375
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 47.248249989934266,
+          "median": 46.00710002705455,
+          "p95": 50.89682497782632,
+          "minimum": 45.24639993906021,
+          "maximum": 51.732399966567755
+        },
+        "tpot_ms": {
+          "mean": 53.275479028196706,
+          "median": 53.20983708670904,
+          "p95": 54.17684823661411,
+          "minimum": 52.432248376369955,
+          "maximum": 54.24999356299879
+        },
+        "end_to_end_ms": {
+          "mean": 1698.7880998640321,
+          "median": 1695.2090996783227,
+          "p95": 1730.2417952974793,
+          "minimum": 1671.2519996799529,
+          "maximum": 1733.4822004195303
+        },
+        "output_tokens_per_second": {
+          "mean": 37.68219046163316,
+          "median": 37.75710600047353,
+          "p95": 38.26970766629978,
+          "minimum": 36.91990606220876,
+          "maximum": 38.29464378337683
+        },
+        "peak_memory_mib": {
+          "mean": 1292.6318359375,
+          "median": 1292.6318359375,
+          "p95": 1292.6318359375,
+          "minimum": 1292.6318359375,
+          "maximum": 1292.6318359375
+        }
+      }
+    },
+    {
+      "backend": "transformers_no_cache",
+      "context_length": 512,
+      "batch_size": 1,
+      "runs": [
+        {
+          "ttft_ms": 53.07579995132983,
+          "tpot_ms": 63.2683580568541,
+          "end_to_end_ms": 2014.3948997138068,
+          "output_tokens_per_second": 15.885663731846407,
+          "peak_memory_mib": 1276.23681640625
+        },
+        {
+          "ttft_ms": 57.68729990813881,
+          "tpot_ms": 63.09623547243856,
+          "end_to_end_ms": 2013.670599553734,
+          "output_tokens_per_second": 15.89137766975978,
+          "peak_memory_mib": 1276.23681640625
+        },
+        {
+          "ttft_ms": 53.25439991429448,
+          "tpot_ms": 62.718787102869925,
+          "end_to_end_ms": 1997.536800103262,
+          "output_tokens_per_second": 16.019729898515898,
+          "peak_memory_mib": 1276.23681640625
+        },
+        {
+          "ttft_ms": 58.555299998261034,
+          "tpot_ms": 63.029264528003914,
+          "end_to_end_ms": 2012.4625003663823,
+          "output_tokens_per_second": 15.900917405504046,
+          "peak_memory_mib": 1276.23681640625
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 55.64319994300604,
+          "median": 55.470849911216646,
+          "p95": 58.4250999847427,
+          "minimum": 53.07579995132983,
+          "maximum": 58.555299998261034
+        },
+        "tpot_ms": {
+          "mean": 63.02816129004162,
+          "median": 63.062750000221236,
+          "p95": 63.24253966919177,
+          "minimum": 62.718787102869925,
+          "maximum": 63.2683580568541
+        },
+        "end_to_end_ms": {
+          "mean": 2009.5161999342963,
+          "median": 2013.0665499600582,
+          "p95": 2014.286254689796,
+          "minimum": 1997.536800103262,
+          "maximum": 2014.3948997138068
+        },
+        "output_tokens_per_second": {
+          "mean": 15.924422176406534,
+          "median": 15.896147537631913,
+          "p95": 16.00190802456412,
+          "minimum": 15.885663731846407,
+          "maximum": 16.019729898515898
+        },
+        "peak_memory_mib": {
+          "mean": 1276.23681640625,
+          "median": 1276.23681640625,
+          "p95": 1276.23681640625,
+          "minimum": 1276.23681640625,
+          "maximum": 1276.23681640625
+        }
+      }
+    },
+    {
+      "backend": "transformers_no_cache",
+      "context_length": 512,
+      "batch_size": 2,
+      "runs": [
+        {
+          "ttft_ms": 116.9582000002265,
+          "tpot_ms": 139.42897741893125,
+          "end_to_end_ms": 4439.256499987096,
+          "output_tokens_per_second": 14.416828583837415,
+          "peak_memory_mib": 1590.03515625
+        },
+        {
+          "ttft_ms": 128.47260001581162,
+          "tpot_ms": 151.39219677075744,
+          "end_to_end_ms": 4821.630699909292,
+          "output_tokens_per_second": 13.273517609136679,
+          "peak_memory_mib": 1590.03515625
+        },
+        {
+          "ttft_ms": 119.91610005497932,
+          "tpot_ms": 142.78740966091715,
+          "end_to_end_ms": 4546.3257995434105,
+          "output_tokens_per_second": 14.077301720529476,
+          "peak_memory_mib": 1590.03515625
+        },
+        {
+          "ttft_ms": 129.7070001019165,
+          "tpot_ms": 164.27872903389675,
+          "end_to_end_ms": 5222.347600152716,
+          "output_tokens_per_second": 12.255024923681537,
+          "peak_memory_mib": 1590.03515625
+        }
+      ],
+      "summary": {
+        "ttft_ms": {
+          "mean": 123.76347504323348,
+          "median": 124.19435003539547,
+          "p95": 129.52184008900076,
+          "minimum": 116.9582000002265,
+          "maximum": 129.7070001019165
+        },
+        "tpot_ms": {
+          "mean": 149.47182822112563,
+          "median": 147.0898032158373,
+          "p95": 162.34574919442585,
+          "minimum": 139.42897741893125,
+          "maximum": 164.27872903389675
+        },
+        "end_to_end_ms": {
+          "mean": 4757.390149898129,
+          "median": 4683.978249726351,
+          "p95": 5162.2400651162025,
+          "minimum": 4439.256499987096,
+          "maximum": 5222.347600152716
+        },
+        "output_tokens_per_second": {
+          "mean": 13.505668209296276,
+          "median": 13.675409664833078,
+          "p95": 14.365899554341222,
+          "minimum": 12.255024923681537,
+          "maximum": 14.416828583837415
+        },
+        "peak_memory_mib": {
+          "mean": 1590.03515625,
+          "median": 1590.03515625,
+          "p95": 1590.03515625,
+          "minimum": 1590.03515625,
+          "maximum": 1590.03515625
+        }
+      }
+    }
+  ]
+}
