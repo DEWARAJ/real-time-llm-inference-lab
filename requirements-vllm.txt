@@ -1,2 +1,4 @@
 vllm==0.30.0
 aiohttp>=3.10
+bitsandbytes==0.50.2
+accelerate>=1.15

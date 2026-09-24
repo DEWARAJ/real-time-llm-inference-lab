@@ -48,6 +48,14 @@ Across three representative shapes and 100 timed runs, the kernel produced 2.83â
 
 Raw report: [`results/triton_rmsnorm.json`](../results/triton_rmsnorm.json)
 
+## 4. NF4 quantization
+
+The quantization experiment loads the same model in FP16 and BitsAndBytes NF4 with double quantization and FP16 compute. It measures model footprint, CUDA allocation after load, 64-token greedy generation, and cross-entropy on a fixed 512-token engineering-text corpus.
+
+NF4 reduced the model footprint from 942.3 MiB to 430.4 MiB, a 54.3% reduction. Median generation throughput fell from 37.16 to 23.44 tokens/s, a 36.9% regression, and sanity-corpus perplexity increased from 2.851 to 2.971, or 4.2%. The experiment demonstrates that low-bit weight storage is a capacity optimization on this hardware and workload, not automatically a latency optimization.
+
+Raw report: [`results/quantization.json`](../results/quantization.json)
+
 ## Limits
 
-These results characterize one laptop GPU and are not production capacity claims. Eager mode was used because it reduced startup complexity on the 6 GB device; CUDA graphs could change both latency and memory. The vLLM workload uses a shared prefix, so results should not be generalized to unrelated prompts without a separate experiment. HTTP results include tokenization and transport; the local model comparison excludes tokenization.
+These results characterize one laptop GPU and are not production capacity claims. Eager mode was used because it reduced startup complexity on the 6 GB device; CUDA graphs could change both latency and memory. The vLLM workload uses a shared prefix, so results should not be generalized to unrelated prompts without a separate experiment. HTTP results include tokenization and transport; the local model comparison excludes tokenization. The quantization quality corpus is a deterministic sanity check rather than a general language-model evaluation.

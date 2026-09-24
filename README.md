@@ -47,6 +47,19 @@ The custom FP16 Triton kernel was checked against a PyTorch reference before tim
 | 4,096 × 896 | 0.3348 ms | 0.0604 ms | 5.54× |
 | 1,024 × 3,584 | 0.3599 ms | 0.0594 ms | 6.06× |
 
+### NF4 weight quantization
+
+BitsAndBytes NF4 with double quantization reduced the model footprint by **54.3%**, from 942.3 MiB to 430.4 MiB. It was not a speedup on this workload: generation throughput fell 36.9%, and perplexity increased 4.2% on a fixed 512-token engineering-text sanity corpus.
+
+| Mode | Model footprint | Output throughput | Sanity-corpus perplexity |
+|---|---:|---:|---:|
+| FP16 | 942.3 MiB | 37.16 tokens/s | 2.851 |
+| NF4 | 430.4 MiB | 23.44 tokens/s | 2.971 |
+
+The result is intentionally retained as a negative optimization finding: compressing weights relieved capacity pressure but introduced dequantization overhead that dominated this small-model, batch-1 workload.
+
+![NF4 tradeoff](assets/quantization_tradeoff.png)
+
 ## What is implemented
 
 - Deterministic PyTorch/Transformers prefill and autoregressive decode benchmark
@@ -56,6 +69,7 @@ The custom FP16 Triton kernel was checked against a PyTorch reference before tim
 - Theoretical grouped-query-attention KV-cache capacity analysis
 - OpenAI-compatible streaming load generator for vLLM and SGLang servers
 - Triton RMSNorm kernel with a tested PyTorch reference and safe fallback
+- FP16 vs BitsAndBytes NF4 memory, speed, and fixed-corpus quality comparison
 - Machine-readable JSON reports, plotting, unit tests, and CI
 
 ## Reproduce the local benchmark
@@ -67,6 +81,8 @@ pip install -e ".[dev,serving]"
 python scripts/run_transformers_benchmark.py
 python scripts/analyze_kv_cache.py
 python scripts/plot_results.py
+python scripts/benchmark_quantization.py
+python scripts/plot_quantization.py
 pytest
 ```
 

@@ -1,0 +1,52 @@
+{
+  "runtime": {
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "bitsandbytes": "0.50.2"
+  },
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "warmup": 2,
+  "repeats": 5,
+  "new_tokens": 64,
+  "experiments": [
+    {
+      "mode": "fp16",
+      "load_seconds": 2.653125160000002,
+      "model_footprint_mib": 942.29296875,
+      "cuda_allocated_after_load_mib": 942.3232421875,
+      "generation_ms": {
+        "median": 1722.3265350000077,
+        "p95": 1907.246555799992,
+        "minimum": 1716.554660000014,
+        "maximum": 1919.5400959999915
+      },
+      "output_tokens_per_second": 37.15903964749618,
+      "quality_corpus_tokens": 512,
+      "quality_cross_entropy": 1.0476174354553223,
+      "quality_perplexity": 2.850850684281369
+    },
+    {
+      "mode": "nf4",
+      "load_seconds": 3.5086936060000085,
+      "model_footprint_mib": 430.41796875,
+      "cuda_allocated_after_load_mib": 444.47265625,
+      "generation_ms": {
+        "median": 2730.0594740000006,
+        "p95": 2806.7571572000134,
+        "minimum": 2613.2793189999857,
+        "maximum": 2817.287761000017
+      },
+      "output_tokens_per_second": 23.442712735568776,
+      "quality_corpus_tokens": 512,
+      "quality_cross_entropy": 1.0888166427612305,
+      "quality_perplexity": 2.9707565254770953
+    }
+  ],
+  "comparison": {
+    "footprint_reduction_percent": 54.32227735701227,
+    "throughput_change_percent": -36.91249031741762,
+    "perplexity_change_percent": 4.205967077014838
+  },
+  "quality_scope": "fixed 512-token engineering-text sanity corpus; not a general model-quality benchmark"
+}
