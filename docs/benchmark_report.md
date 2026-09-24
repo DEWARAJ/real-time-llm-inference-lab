@@ -56,6 +56,14 @@ NF4 reduced the model footprint from 942.3 MiB to 430.4 MiB, a 54.3% reduction. 
 
 Raw report: [`results/quantization.json`](../results/quantization.json)
 
+## 5. Gateway policy simulation
+
+The gateway extension includes a seeded discrete-event overload simulation covering FIFO, shortest-first, priority, and prefix-aware scheduling with and without admission control. The simulation verifies scheduling and rejection behavior before a live model-server run. It is deliberately labeled as simulated evidence and is not included in the GPU performance claims above.
+
+Across the fixed 500-request trace, SLO admission reduced p95 latency from 1.43–1.52 seconds to 709 ms and mean queue depth from 6.39–7.31 requests to 1.74–1.83 requests. It achieved that protection by accepting 247–252 requests and rejecting the remainder as predicted deadline misses. This is a capacity-versus-latency policy demonstration, not a claim that rejection improves model throughput.
+
+Raw report: [`results/gateway_simulation.json`](../results/gateway_simulation.json)
+
 ## Limits
 
 These results characterize one laptop GPU and are not production capacity claims. Eager mode was used because it reduced startup complexity on the 6 GB device; CUDA graphs could change both latency and memory. The vLLM workload uses a shared prefix, so results should not be generalized to unrelated prompts without a separate experiment. HTTP results include tokenization and transport; the local model comparison excludes tokenization. The quantization quality corpus is a deterministic sanity check rather than a general language-model evaluation.

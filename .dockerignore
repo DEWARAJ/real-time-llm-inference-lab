@@ -1,0 +1,13 @@
+.git
+.github
+.pytest_cache
+.pytest_tmp*
+__pycache__
+*.pyc
+assets
+configs
+deploy
+docs
+results
+tests
+work

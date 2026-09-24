@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-inference-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: llm-inference-gateway
+  template:
+    metadata:
+      labels:
+        app: llm-inference-gateway
+    spec:
+      containers:
+        - name: gateway
+          image: real-time-llm-inference-lab:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: BACKEND_URL
+              value: http://vllm:8000
+            - name: SCHEDULING_POLICY
+              value: priority
+            - name: MAX_QUEUE_REQUESTS
+              value: "64"
+            - name: MAX_QUEUE_TOKENS
+              value: "32768"
+            - name: DISPATCH_BATCH_SIZE
+              value: "8"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llm-inference-gateway
+spec:
+  selector:
+    app: llm-inference-gateway
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: llm-inference-gateway
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: llm-inference-gateway
+  minReplicas: 2
+  maxReplicas: 8
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 65

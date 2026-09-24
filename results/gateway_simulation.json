@@ -1,0 +1,181 @@
+{
+  "kind": "deterministic_queueing_simulation",
+  "disclaimer": "These are simulated policy results, not measured GPU-serving results.",
+  "seed": 7,
+  "requests": 500,
+  "model": {
+    "output_tokens_per_second": 350,
+    "dispatch_batch_size": 8,
+    "dispatch_token_budget": 8192
+  },
+  "runs": [
+    {
+      "policy": "fifo",
+      "admission_control": false,
+      "requests_total": 500,
+      "requests_accepted": 500,
+      "requests_rejected": 0,
+      "rejections_by_reason": {},
+      "accepted_slo_rate_pct": 95.2,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 85.45454545454545,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 704.7667854679504,
+        "p95": 1425.0400869921832,
+        "p99": 1547.9434235076255
+      },
+      "completed_throughput_requests_per_second": 14.893914987657169,
+      "mean_queue_depth": 7.3074324324324325
+    },
+    {
+      "policy": "fifo",
+      "admission_control": true,
+      "requests_total": 500,
+      "requests_accepted": 247,
+      "requests_rejected": 253,
+      "rejections_by_reason": {
+        "predicted_slo_miss": 253
+      },
+      "accepted_slo_rate_pct": 100.0,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 100.0,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 495.6368539982323,
+        "p95": 708.7979942331713,
+        "p99": 866.8903188703534
+      },
+      "completed_throughput_requests_per_second": 7.533133336798786,
+      "mean_queue_depth": 1.7392739273927393
+    },
+    {
+      "policy": "shortest_first",
+      "admission_control": false,
+      "requests_total": 500,
+      "requests_accepted": 500,
+      "requests_rejected": 0,
+      "rejections_by_reason": {},
+      "accepted_slo_rate_pct": 98.2,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 94.54545454545455,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 590.1398233229571,
+        "p95": 1523.849753773275,
+        "p99": 2095.9568354798535
+      },
+      "completed_throughput_requests_per_second": 14.98569666005595,
+      "mean_queue_depth": 6.3872053872053876
+    },
+    {
+      "policy": "shortest_first",
+      "admission_control": true,
+      "requests_total": 500,
+      "requests_accepted": 252,
+      "requests_rejected": 248,
+      "rejections_by_reason": {
+        "predicted_slo_miss": 248
+      },
+      "accepted_slo_rate_pct": 100.0,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 100.0,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 497.0486347181211,
+        "p95": 708.7979942331713,
+        "p99": 855.3528073278743
+      },
+      "completed_throughput_requests_per_second": 7.683653460687281,
+      "mean_queue_depth": 1.827018121911038
+    },
+    {
+      "policy": "priority",
+      "admission_control": false,
+      "requests_total": 500,
+      "requests_accepted": 500,
+      "requests_rejected": 0,
+      "rejections_by_reason": {},
+      "accepted_slo_rate_pct": 100.0,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 100.0,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 652.1589045460239,
+        "p95": 1508.2641035580489,
+        "p99": 1746.914822125862
+      },
+      "completed_throughput_requests_per_second": 14.928814236546579,
+      "mean_queue_depth": 7.16722972972973
+    },
+    {
+      "policy": "priority",
+      "admission_control": true,
+      "requests_total": 500,
+      "requests_accepted": 247,
+      "requests_rejected": 253,
+      "rejections_by_reason": {
+        "predicted_slo_miss": 253
+      },
+      "accepted_slo_rate_pct": 100.0,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 100.0,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 495.6368539982323,
+        "p95": 708.7979942331713,
+        "p99": 866.8903188703534
+      },
+      "completed_throughput_requests_per_second": 7.533133336798786,
+      "mean_queue_depth": 1.7392739273927393
+    },
+    {
+      "policy": "prefix_aware",
+      "admission_control": false,
+      "requests_total": 500,
+      "requests_accepted": 500,
+      "requests_rejected": 0,
+      "rejections_by_reason": {},
+      "accepted_slo_rate_pct": 96.2,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 88.48484848484848,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 695.6845636173483,
+        "p95": 1467.0488401665357,
+        "p99": 1673.269357287566
+      },
+      "completed_throughput_requests_per_second": 14.912780139893856,
+      "mean_queue_depth": 7.212837837837838
+    },
+    {
+      "policy": "prefix_aware",
+      "admission_control": true,
+      "requests_total": 500,
+      "requests_accepted": 247,
+      "requests_rejected": 253,
+      "rejections_by_reason": {
+        "predicted_slo_miss": 253
+      },
+      "accepted_slo_rate_pct": 100.0,
+      "accepted_slo_rate_by_class_pct": {
+        "interactive": 100.0,
+        "bulk": 100.0
+      },
+      "latency_ms": {
+        "p50": 495.6368539982323,
+        "p95": 708.7979942331713,
+        "p99": 866.8903188703534
+      },
+      "completed_throughput_requests_per_second": 7.533133336798786,
+      "mean_queue_depth": 1.7392739273927393
+    }
+  ]
+}

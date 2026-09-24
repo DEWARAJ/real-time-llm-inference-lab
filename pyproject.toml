@@ -17,9 +17,16 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "matplotlib>=3.8"]
+dev = [
+  "pytest>=8",
+  "matplotlib>=3.8",
+  "fastapi>=0.115",
+  "httpx>=0.27",
+  "uvicorn>=0.30",
+]
 serving = ["aiohttp>=3.10"]
 kernels = ["triton>=3.0; platform_system == 'Linux'"]
+gateway = ["fastapi>=0.115", "httpx>=0.27", "uvicorn>=0.30"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

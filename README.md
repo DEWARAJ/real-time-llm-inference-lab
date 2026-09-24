@@ -60,6 +60,21 @@ The result is intentionally retained as a negative optimization finding: compres
 
 ![NF4 tradeoff](assets/quantization_tradeoff.png)
 
+## SLO-aware inference gateway
+
+The repository now includes a production-facing gateway in front of any OpenAI-compatible vLLM or SGLang backend. It implements:
+
+- Deadline-aware admission control and explicit overload rejection
+- FIFO, shortest-first, priority, and prefix-aware scheduling
+- Token-budgeted dispatch batches and queue backpressure
+- Streaming and non-streaming OpenAI chat-completions forwarding
+- Backend circuit breaking, health probes, and Prometheus-format metrics
+- Docker packaging and a Kubernetes deployment, service, probes, resource boundaries, and HPA
+
+The deterministic overload simulation in `results/gateway_simulation.json` is labeled as simulated evidence rather than a GPU benchmark. It is used to verify policy behavior before collecting live backend measurements.
+
+![Gateway simulation](assets/gateway_simulation.png)
+
 ## What is implemented
 
 - Deterministic PyTorch/Transformers prefill and autoregressive decode benchmark
@@ -70,6 +85,7 @@ The result is intentionally retained as a negative optimization finding: compres
 - OpenAI-compatible streaming load generator for vLLM and SGLang servers
 - Triton RMSNorm kernel with a tested PyTorch reference and safe fallback
 - FP16 vs BitsAndBytes NF4 memory, speed, and fixed-corpus quality comparison
+- SLO-aware OpenAI-compatible gateway with scheduling, admission control, observability, and failure isolation
 - Machine-readable JSON reports, plotting, unit tests, and CI
 
 ## Reproduce the local benchmark
@@ -83,6 +99,8 @@ python scripts/analyze_kv_cache.py
 python scripts/plot_results.py
 python scripts/benchmark_quantization.py
 python scripts/plot_quantization.py
+python scripts/simulate_gateway.py
+python scripts/plot_gateway_simulation.py
 pytest
 ```
 
@@ -102,6 +120,15 @@ python scripts/benchmark_openai_server.py \
 
 The load generator uses streaming responses to measure TTFT rather than treating the entire response as one opaque request.
 
+Run the gateway in front of that backend:
+
+```bash
+pip install -e ".[gateway]"
+BACKEND_URL=http://127.0.0.1:8000 SCHEDULING_POLICY=priority \
+  python scripts/run_gateway.py
+curl http://127.0.0.1:8080/healthz
+```
+
 The exact measured commands and interpretation are documented in [the benchmark report](docs/benchmark_report.md).
 
 ## Evidence
@@ -114,6 +141,7 @@ Measured results and figures live under `results/` and `assets/`. See [the exper
 configs/                 benchmark matrices
 src/inference_lab/       metrics, KV-cache analysis, kernels, benchmark engine
 scripts/                 runnable experiments and plotting
+deploy/kubernetes/       gateway deployment, service, health probes, and HPA
 tests/                   correctness and invariant tests
 docs/                    methodology and resume evidence
 results/                 machine-readable measured outputs

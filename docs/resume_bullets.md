@@ -8,3 +8,9 @@
 - Evaluated BitsAndBytes NF4 quantization, reducing model footprint 54.3% while identifying a 36.9% throughput regression and 4.2% fixed-corpus perplexity increase on the target GPU.
 
 For Nuance Labs, use the first two bullets and combine the Triton and quantization findings into a third bullet if space permits.
+
+## Gateway extension
+
+- Built an SLO-aware OpenAI-compatible inference gateway with deadline-based admission control, token-budgeted priority and prefix-aware scheduling, queue backpressure, circuit breaking, Prometheus metrics, and Docker/Kubernetes deployment.
+
+Do not add a live-serving performance claim until the gateway has been benchmarked against the GPU backend. The checked-in overload results are a deterministic queueing simulation and are labeled accordingly.
